@@ -1,0 +1,91 @@
+/* CONFIGURAÇÃO PADRÃO PARA RESET DO SITE */
+* {
+    margin: 0;
+    padding: 0;
+    /* Espaçamento de dentro pra fora */
+    box-sizing: border-box;
+    font-family: "Google Sans Flex", sans-serif;
+    /* Fonte principal do nosso site */
+}
+
+body {
+    background-color: #0f0f1e;
+    color: white;
+    font-size: 16px;
+    overflow: hidden;
+    /* Esconde (corta) o excesso da imagem */
+
+    /* (visible) Mostra o excesso da imagem 
+    (auto) Adiciona rolagem quando necessario */
+}
+
+header {
+    position: fixed;
+    width: 90vw;
+    /* Largura da nossa imagem */
+    top: 0;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Para os itens ficarem alinhados com o centro */
+    z-index: 3;
+}
+
+.logo {
+    font-family: "Google Sans Flex", sans-serif;
+    font-size: 2rem;
+    /* Medida de tamanho */
+    font-weight: 900;
+    /* Grossura da fonte */
+    text-shadow: 0 0 10px;
+}
+
+header nav ul {
+    /* Aqui ele está pegando no HTML o HEADER que tem uma NAV e dentro dessa NAV tem uma UL */
+    display: flex;
+    /* Deixar os itens da lista um do lado do outro */
+    gap: 48px;
+    /* Distanciamento entre os itens */
+}
+
+header nav ul li {
+    /* Agora estou repetindo o processo só que dessa vez estou pegando uma Li */
+    cursor: pointer;
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Para o after funcionar precisamos do houver porque é ele que vai criar a animação */
+
+header nav ul li::after {
+    content:'';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00f7ff;
+    transition: width 0.2s ease ;
+}
+
+/* Estou utilizando esse comando para criar o efeito de barrinha na nav */
+
+header nav ul li:hover::after {
+    width: 100%;
+}
+
+.container {
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(135deg, #0f0f1e 0%, #1f1f3a 100%);
+    overflow: hidden;
+}
+
+.container::before {
+    content: ''; /* As aspas vazias significam que não queremos inserir nenhum texto */
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+}
