@@ -47,6 +47,7 @@ header nav ul {
     /* Deixar os itens da lista um do lado do outro */
     gap: 48px;
     /* Distanciamento entre os itens */
+    list-style: none; /* Remove as bolinhas que estavam aparecendo no menu da navegação */
 }
 
 header nav ul li {
@@ -126,10 +127,15 @@ header nav ul li:hover::after {
     justify-content: center;
     align-items: center;
     opacity: 0;
-}
 
-.active {
-    opacity: 1;
+    /* ANIMACAO */
+    transform: translateX(0);
+
+    transition:
+        transform 0.65s ease-in-out,
+        opacity 0.65s ease-in-out;
+
+    pointer-events: none;
 }
 
 .product-img {
@@ -148,10 +154,26 @@ header nav ul li:hover::after {
     filter: drop-shadow(0 0 30px rgba(0, 247, 255, 0.3));
 }
 
+.item.active{
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.item.active .product-img{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.item.active .product-img img {
+    opacity: 1;
+    transform: translateX(0);
+}
 .content {
     width: 55%;
     padding-right: 80px;
     display: flex;
+    flex-direction: column; /* organiza os elementos verticalmente */
     align-items: flex-start;
     justify-content: center;
     z-index: 2;
@@ -168,7 +190,7 @@ header nav ul li:hover::after {
 
 .product-name {
     font-size: 4.5rem;
-    font-family: "0rbitron", sans-serif;
+    font-family: "Orbitron", sans-serif;
     line-height: 1.1;
     margin-bottom: 20px;
 }
@@ -248,7 +270,7 @@ header nav ul li:hover::after {
     border-radius: 2px;
 }
 
-.dot-active {
+.dot.active {
     background-color: #00f7ff;
     box-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
 }
@@ -260,6 +282,12 @@ header nav ul li:hover::after {
     width: 100%;
     height: 100%;
     overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border: 1px solid rgba(0, 247, 255, 0.15);
+    border-radius: 50%;
 }
 
 .circle:nth-child(1) {
